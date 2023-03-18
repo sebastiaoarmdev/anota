@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta property="og:title" content="ANota">
+    <meta property="og:url" content="https://sebastiaoarmdev.github.io/anota/">
+    <meta property="og:description" content="Uma ferramenta para registrar a lista de compras ou a conta do bar.">
+    <meta property="og:image" content="https://sebastiaoarmdev.github.io/anota/images/256x256.png">
+    <meta property="og:image:secure_url" content="https://sebastiaoarmdev.github.io/ccreader/images/256x256.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:imageimage:width" content="256">
+    <meta property="og:image:height" content="256">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">    
+    <title>ANota</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="container">
+    <header>
+        <i class="bx bx-list-plus bx-lg" ></i>
+        <p><i class="fa-solid fa-list"></i></p>
+        <h1>ANota</h1>
+    </header>
+    <main>
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="bx bx-purchase-tag-alt bx-sm"></i></span>
+            <input id="tag-input" type="text" class="form-control" placeholder="Item..." aria-label="Item...">
+            <span class="input-group-text"><i class="bx bx-money-withdraw bx-sm"></i></span>
+            <input id="value-input" type="number" class="form-control" placeholder="$..." aria-label="Value..." step="0.01" min="0">
+            <button id="add-button" type="button" class="btn btn-outline-dark"><i class="bx bx-plus-medical bx-sm"></i></button>
+        </div>
+        <hr>
+        <div id="list"></div>
+        <div id="total" hidden>Total: R$ 0,00</div>
+    </main>
+    <footer>
+        <hr>
+        <p>Developed by <a href="https://github.com/sebastiaoarmdev/"  target="_blank">Sebastião Armdev</a> using <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> and <a href="https://boxicons.com/" target="_blank">Boxicons</a>.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="scripts/main.js"></script>
+	<script src="scripts/app.js"></script>
+</body>
+</html>

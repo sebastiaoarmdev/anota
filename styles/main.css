@@ -1,0 +1,23 @@
+* {
+    font-family: monospace;
+}
+
+body {
+    margin: 16px;
+}
+
+header {
+    text-align: center;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+hr {
+    width: 50%;
+}
+
+footer {
+    font-size: x-small;
+}
