@@ -30,7 +30,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener("fetch", (event) => {
     event.respondWith(
         (async () => {
-            const response = await caches.match(event.request);
+            let response = await caches.match(event.request);
             console.log(`[Service Worker] Fetching resource: ${event.request.url}`);
             if (response) {
                 return response;
