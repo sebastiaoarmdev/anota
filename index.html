@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="libs/boxicons-2.1.4/css/boxicons.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="manifest" href="manifest.json">    
+    <link rel="manifest" href="manifest.json">
 </head>
 <body class="container">
     <header>
@@ -29,20 +29,49 @@
     </header>
     <main>
         <div class="input-group mb-3">
-            <span class="input-group-text"><i class="bx bx-purchase-tag-alt bx-sm"></i></span>
-            <input id="tag-input" type="text" class="form-control" placeholder="Item..." aria-label="Item...">
-            <span class="input-group-text"><i class="bx bx-money-withdraw bx-sm"></i></span>
-            <input id="value-input" type="number" class="form-control" placeholder="$..." aria-label="Value..." step="0.01" min="0">
-            <button id="add-button" type="button" class="btn btn-outline-dark"><i class="bx bx-plus-medical bx-sm"></i></button>
+            <span 
+                id="tag-label" 
+                class="input-group-text default" 
+                data-color="default">
+                <i class="bx bx-purchase-tag-alt bx-sm"></i>
+            </span>
+            <input 
+                id="tag-input" 
+                type="text" 
+                class="form-control" 
+                placeholder="Item..." 
+                aria-label="Item..."
+                list="datalist-tags">
+            <span 
+                id="value-label" 
+                class="input-group-text" 
+                data-countable="true">
+                <i class="bx bx-money-withdraw bx-sm"></i>
+            </span>
+            <input 
+                id="value-input" 
+                type="number" 
+                class="form-control" 
+                placeholder="$..." 
+                aria-label="Value..." 
+                step="0.01" 
+                min="0">
+            <button 
+                id="add-button" 
+                class="btn btn-outline-dark">
+                <i class="bx bx-plus-medical bx-sm"></i>
+            </button>
         </div>
         <hr>
         <div id="list"></div>
-        <div id="total" hidden>Total: R$ 0,00</div>
+        <div id="total" hidden></div>
     </main>
     <footer>
         <hr>
         <p>Por <a href="https://github.com/sebastiaoarmdev/"  target="_blank">Sebastião Armdev</a> com <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> e <a href="https://boxicons.com/" target="_blank">Boxicons</a>.</p>
+        <p>Versão 20230322164800.</p>
     </footer>
+    <datalist id="datalist-tags"></datalist>
     <script src="libs/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/main.js"></script>
 	<script src="scripts/app.js"></script>
