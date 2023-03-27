@@ -141,7 +141,7 @@ function loadItens() {
     for (const item of itens) {
         let tag = item.tag;
         let value = item.value;
-        let color = item.color ? 'default' : item.color;
+        let color = item.color ? item.color : 'default';
         let countable = item.countable ? true : item.countable;
         let newItem = new Item(tag, value, color, countable);
         addItem(newItem);
@@ -213,7 +213,7 @@ function getNewValueLabel(id, countable = true) {
     let newId = `value-label-${id}`;
     let valueLabel = getNewLabel(newId, valueLabelText);
     valueLabel.dataset.countable = countable;
-    if (!countable) valueLabel.classList.add('text-bg-dark');
+    if (!countable) valueLabel.classList.add(COLORS.get('gray').class);
     valueLabel.addEventListener('click', () => toggleAccounting(valueLabel));
     return valueLabel;
 }
