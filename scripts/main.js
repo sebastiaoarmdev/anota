@@ -1,5 +1,6 @@
 'use strict';
 
+const VERSION = '202303281504';
 const DEBUGGING = true;
 const ITENS = 'anota/itens';
 const OPTIONS = 'anota/options';
@@ -27,6 +28,7 @@ let list = document.getElementById('list');
 let datalistTags = document.getElementById('datalist-tags');
 let total = document.getElementById('total');
 let lastId = 0;
+let version = document.getElementById('version');;
 
 class Item {
     #tag;
@@ -107,6 +109,7 @@ function getOptions() {
     let optionItens = document.getElementsByTagName('option');
     let options = [];
     for (const optionIten of optionItens) {
+        if (optionIten.value.trim() == '') continue;
         options.push(optionIten.value);
     }
     return options;
@@ -152,6 +155,7 @@ function loadOptions() {
     let options =  JSON.parse(localStorage.getItem(OPTIONS));
     if (!options) return;
     for (const option of options) {
+        if (option.trim() == '') continue;
         addOption(option);
     }
 }
@@ -159,6 +163,7 @@ function loadOptions() {
 function loadData() {
     loadItens();
     loadOptions();
+    version.innerHTML = `Versão ${VERSION}.`;
 }
 
 function updateTotalValue() {
@@ -385,11 +390,7 @@ function removeItemById(id) {
     saveData();
 }
 
-tagLabel.addEventListener('click', () => toggleLabelColor(tagLabel));
-
-valueLabel.addEventListener('click', () => toggleAccounting(valueLabel));
-
-addButton.addEventListener('click', () => {
+function clickAddButton() {
     let tag = tagInput.value.trim();
     tagInput.value = '';    
     let value = valueInput.value;
@@ -399,7 +400,13 @@ addButton.addEventListener('click', () => {
     tagInput.focus();    
     let newItem = new Item(tag, value, color, countable);    
     addItem(newItem);
-});
+}
+
+tagLabel.addEventListener('click', () => toggleLabelColor(tagLabel));
+
+valueLabel.addEventListener('click', () => toggleAccounting(valueLabel));
+
+addButton.addEventListener('click', clickAddButton);
 
 tagInput.addEventListener('click', () => tagInput.select());
 

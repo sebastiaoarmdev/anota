@@ -31,6 +31,12 @@
             "src": "images/256x256.png",
             "type": "image/png",
             "sizes": "256x256"
+        },
+        {
+            "src": "images/512x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any maskable"
         }
     ]
 }
