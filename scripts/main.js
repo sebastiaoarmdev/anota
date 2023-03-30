@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '202303281504';
+const VERSION = '202303292151';
 const DEBUGGING = true;
 const ITENS = 'anota/itens';
 const OPTIONS = 'anota/options';
@@ -8,9 +8,9 @@ const COLORS = new Map([
     ['default', {class: 'default', next: 'red'}],
     ['red', {class: 'text-bg-danger', next: 'green'}],
     ['green', {class: 'text-bg-success', next: 'blue'}],
-    ['blue', {class: 'text-bg-primary', next: 'default'}],
-    ['gray', {class: 'text-bg-secondary', next: 'default'}],
+    ['blue', {class: 'text-bg-primary', next: 'yellow'}],
     ['yellow', {class: 'text-bg-warning', next: 'default'}],
+    ['gray', {class: 'text-bg-secondary', next: 'default'}],
     ['white', {class: 'text-bg-light', next: 'default'}],
     ['black', {class: 'text-bg-dark', next: 'default'}]
 ]);
