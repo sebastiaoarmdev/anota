@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '202303281504';
+const VERSION = '202303292151';
 const RESOURCES = [
     './',
     './index.html',
@@ -10,7 +10,9 @@ const RESOURCES = [
     './images/32x32.png',
     './images/64x64.png',
     './images/128x128.png',
+    './images/192x192.png',
     './images/256x256.png',
+    './images/512x512.png',
     './images/favicon.ico',
     './libs/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css',
     './libs/boxicons-2.1.4/css/boxicons.min.css',

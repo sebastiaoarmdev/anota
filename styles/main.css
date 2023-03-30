@@ -21,3 +21,7 @@ hr {
 footer {
     font-size: small;
 }
+
+input[id^='value-input'] {
+    max-width: 16ch;
+}
