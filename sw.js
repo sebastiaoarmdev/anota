@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '202303292151';
+const VERSION = '202304010248';
 const RESOURCES = [
     './',
     './index.html',

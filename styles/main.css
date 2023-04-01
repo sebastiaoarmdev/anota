@@ -23,5 +23,5 @@ footer {
 }
 
 input[id^='value-input'] {
-    max-width: 16ch;
+    max-width: 10ch;
 }

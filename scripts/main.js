@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '202303292151';
+const VERSION = '202304010248';
 const DEBUGGING = true;
 const ITENS = 'anota/itens';
 const OPTIONS = 'anota/options';
@@ -28,7 +28,8 @@ let list = document.getElementById('list');
 let datalistTags = document.getElementById('datalist-tags');
 let total = document.getElementById('total');
 let lastId = 0;
-let version = document.getElementById('version');;
+let version = document.getElementById('version');
+let clearListButton = document.getElementById('clear-list-button');
 
 class Item {
     #tag;
@@ -90,7 +91,7 @@ class Item {
     }
 }
 
-function getItens() {    
+function getItens() {
     let listItens = document.getElementsByClassName('list-item');
     let itens = [];
     for (const listItem of listItens) {
@@ -278,7 +279,7 @@ function getNewRemoveButton(id) {
     let removeButton = getNewButton(
         'remove-button',
         removeButtonLabel, 
-        () => removeItemById(id)
+        () => clickRemoveButton(id)
     );
     return removeButton;
 }
@@ -372,7 +373,7 @@ function copyItemById(id) {
     valueInput.addEventListener('click', () => valueInput.select());
     
     let removeButton = clone.querySelector('.remove-button');
-    removeButton.addEventListener('click', () => removeItemById(clone.id));
+    removeButton.addEventListener('click', () => clickRemoveButton(clone.id));
     
     let copyButton = clone.querySelector('.copy-button');
     copyButton.addEventListener('click', () => copyItemById(clone.id));
@@ -388,6 +389,22 @@ function removeItemById(id) {
     list.removeChild(listItem);
     updateTotalValue();
     saveData();
+}
+
+function clickRemoveButton(id) {
+    if (confirm("Remover item?")) removeItemById(id);
+}
+
+function clearList() {
+    let listItens = document.getElementsByClassName('list-item');
+    listItens = Array.from(listItens).reverse();
+    for (const listItem of listItens) {
+        removeItemById(listItem.id)
+    }
+}
+
+function clickClearListButton() {
+    if (confirm("Limpar lista?")) clearList();
 }
 
 function clickAddButton() {
@@ -407,6 +424,8 @@ tagLabel.addEventListener('click', () => toggleLabelColor(tagLabel));
 valueLabel.addEventListener('click', () => toggleAccounting(valueLabel));
 
 addButton.addEventListener('click', clickAddButton);
+
+clearListButton.addEventListener('click', clickClearListButton);
 
 tagInput.addEventListener('click', () => tagInput.select());
 
