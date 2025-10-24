@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '202304010248';
+const VERSION = '20251024154300';
 const DEBUGGING = true;
 const ITENS = 'anota/itens';
 const OPTIONS = 'anota/options';
@@ -30,6 +30,7 @@ let total = document.getElementById('total');
 let lastId = 0;
 let version = document.getElementById('version');
 let clearListButton = document.getElementById('clear-list-button');
+let sortButton = document.getElementById('sort-button');
 
 class Item {
     #tag;
@@ -403,6 +404,62 @@ function clearList() {
     }
 }
 
+function sortItensByColor() {
+    // 1. Pega todos os itens visíveis no DOM
+    let listItens = Array.from(document.getElementsByClassName('list-item'));
+    
+    // 2. Define a ordem de prioridade das cores (mantemos a mesma ordem)
+    const colorOrder = [
+        'default', 'red', 'green', 'blue', 'yellow', 'gray', 'white', 'black'
+    ];
+    
+    // 3. Função de comparação para o sort - Adaptada
+    listItens.sort((a, b) => {
+        const idA = a.id;
+        const idB = b.id;
+        
+        // **PARTE 1: Ordenação Primária por COR**
+        const colorA = document.getElementById(`tag-label-${idA}`).dataset.color;
+        const colorB = document.getElementById(`tag-label-${idB}`).dataset.color;
+
+        const indexA = colorOrder.indexOf(colorA);
+        const indexB = colorOrder.indexOf(colorB);
+
+        // Se as cores são diferentes, retorna a comparação por cor.
+        if (indexA < indexB) {
+            return -1;
+        }
+        if (indexA > indexB) {
+            return 1;
+        }
+        
+        // **PARTE 2: Ordenação Secundária por NOME/TAG**
+        // Se chegamos aqui, as cores são IGUAIS (indexA === indexB).
+        const tagA = document.getElementById(`tag-input-${idA}`).value.toLowerCase().trim();
+        const tagB = document.getElementById(`tag-input-${idB}`).value.toLowerCase().trim();
+        
+        // Compara as tags lexicograficamente (alfabeticamente)
+        if (tagA < tagB) {
+            return -1;
+        }
+        if (tagA > tagB) {
+            return 1;
+        }
+        
+        return 0; // Itens são idênticos em cor e tag.
+    });
+
+    // 4. Remove e adiciona os itens no DOM na nova ordem
+    list.replaceChildren(); 
+    
+    listItens.forEach(item => {
+        list.appendChild(item);
+    });
+
+    // Salva os dados para manter a nova ordem
+    saveData();
+}
+
 function clickClearListButton() {
     if (confirm("Limpar lista?")) clearList();
 }
@@ -426,6 +483,8 @@ valueLabel.addEventListener('click', () => toggleAccounting(valueLabel));
 addButton.addEventListener('click', clickAddButton);
 
 clearListButton.addEventListener('click', clickClearListButton);
+
+sortButton.addEventListener('click', sortItensByColor);
 
 tagInput.addEventListener('click', () => tagInput.select());
 
